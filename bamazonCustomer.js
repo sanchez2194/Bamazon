@@ -22,3 +22,20 @@ function queryAllProducts() {
       console.log("-----------------------------------");
     });
   }
+
+  inquirer
+  .prompt([
+    // Here we create a basic text prompt.
+    {
+      type: "input",
+      message: "What is the item_id of the product you are looking for?",
+      name: "item_id"
+    },
+    // Here we create a basic password-protected text prompt.
+    {
+      type: "input",
+      message: "How many would you like?",
+      name: "quantity"
+    },
+    
+  ]);
