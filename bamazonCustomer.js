@@ -38,4 +38,20 @@ function queryAllProducts() {
       name: "quantity"
     },
     
-  ]);
+  ])
+  
+  .then(function(inquirerResponse, res) {
+    connection.query(`SELECT * FROM products WHERE item_id = ${inquirerResponse.item_id}`, function(err, res) {
+        console.log(res);
+        if (res[0].stock_quantity > 0) {
+          console.log("we have " + res[0].stock_quantity + " left with an item id of:" + inquirerResponse.item_id);
+    
+          //stock_quantity --;
+          
+          console.log("There are now " + res[0].stock_quantity + " left");
+        }
+        else {
+          console.log("Sorry, come again when we have more");
+        }
+    })
+  });
